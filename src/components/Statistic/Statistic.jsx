@@ -1,30 +1,41 @@
-export const Statistic = ({
-  good,
-  neutral,
-  bad,
-  total,
-  positivePercentage,
-}) => {
+import Box from '@mui/material/Box';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import { FeedbackList } from './Statistic.styled';
+import { Notification } from 'components/Notification/Notification';
+import { StatisticTitle } from './Statistic.styled';
+
+export const Statistic = props => {
   return (
     <>
-      <h2>Statistic</h2>
-      <ul>
-        <li>
-          <p>Good: {good}</p>
-        </li>
-        <li>
-          <p>Neutral: {neutral}</p>
-        </li>
-        <li>
-          <p>Bad: {bad}</p>
-        </li>
-        <li>
-          <p>Total: {total}</p>
-        </li>
-        <li>
-          <p>Positive feedback: {positivePercentage}%</p>
-        </li>
-      </ul>
+      <StatisticTitle>Statistic</StatisticTitle>
+
+      {Object.values(props).some(prop => prop) ? (
+        <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+          <nav aria-label="main mailbox folders">
+            <FeedbackList>
+              {Object.keys(props).map(prop => {
+                return (
+                  <ListItem disablePadding key={prop}>
+                    <ListItemButton>
+                      <ListItemText primary={createFeedbackItem(props, prop)} />
+                    </ListItemButton>
+                  </ListItem>
+                );
+              })}
+            </FeedbackList>
+          </nav>
+        </Box>
+      ) : (
+        <Notification message="There is no feedback" />
+      )}
     </>
   );
 };
+
+function createFeedbackItem(props, prop) {
+  return prop === 'positivePercentage'
+    ? 'Positive feedback: ' + props[prop] + '%'
+    : prop[0].toUpperCase() + prop.slice(1) + ': ' + props[prop];
+}

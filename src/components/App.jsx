@@ -1,5 +1,7 @@
 import { Component } from 'react';
+import { Global } from '@emotion/react';
 import { Section } from './Section/Section';
+import { GlobalStyles } from 'css/GlobalStyles';
 
 export class App extends Component {
   state = {
@@ -28,16 +30,19 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     return (
-      <Section
-        title="Please leave feedback"
-        good={good}
-        neutral={neutral}
-        bad={bad}
-        total={this.countTotalFeedback()}
-        positivePercentage={this.countPositiveFeedbackPercentage()}
-        options={1}
-        onLeaveFeedback={this.onLeaveFeedback}
-      />
+      <>
+        <Global styles={GlobalStyles} />
+        <Section
+          title="Please leave feedback"
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+          options={this.state}
+          onLeaveFeedback={this.onLeaveFeedback}
+        />
+      </>
     );
   }
 }

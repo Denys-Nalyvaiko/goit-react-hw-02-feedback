@@ -1,5 +1,6 @@
 import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 import { Statistic } from 'components/Statistic/Statistic';
+import { Container, Title } from './Section.styled';
 
 export const Section = ({
   title,
@@ -11,8 +12,8 @@ export const Section = ({
   options,
   onLeaveFeedback,
 }) => (
-  <>
-    <h1>{title}</h1>
+  <Container>
+    <Title>{title}</Title>
     <FeedbackOptions options={options} onLeaveFeedback={onLeaveFeedback} />
     <Statistic
       good={good}
@@ -21,5 +22,5 @@ export const Section = ({
       total={total}
       positivePercentage={positivePercentage}
     />
-  </>
+  </Container>
 );
