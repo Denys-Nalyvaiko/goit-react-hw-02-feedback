@@ -1,7 +1,7 @@
 import { List, FeedbackButton } from './FeedbackOptions.styled';
 export const FeedbackOptions = ({ onLeaveFeedback, options }) => (
   <List>
-    {Object.keys(options).map(option => (
+    {options.map(option => (
       <li key={option}>
         <FeedbackButton
           variant="contained"

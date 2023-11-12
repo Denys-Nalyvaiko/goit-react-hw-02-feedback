@@ -16,7 +16,7 @@ export class App extends Component {
   }
 
   countPositiveFeedbackPercentage() {
-    return Math.round((this.state.good * 100) / this.countTotalFeedback());
+    return Math.round((this.state.good * 100) / this.countTotalFeedback()) || 0;
   }
 
   onLeaveFeedback = event => {
@@ -28,18 +28,14 @@ export class App extends Component {
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
     return (
       <>
         <Global styles={GlobalStyles} />
         <Section
           title="Please leave feedback"
-          good={good}
-          neutral={neutral}
-          bad={bad}
+          options={this.state}
           total={this.countTotalFeedback()}
           positivePercentage={this.countPositiveFeedbackPercentage()}
-          options={this.state}
           onLeaveFeedback={this.onLeaveFeedback}
         />
       </>
