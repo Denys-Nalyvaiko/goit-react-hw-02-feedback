@@ -8,4 +8,5 @@ export const StatisticTitle = styled.h2`
 export const FeedbackList = styled(List)`
   background-color: #252525;
   border: 2px solid #474747;
+  text-transform: capitalize;
 `;

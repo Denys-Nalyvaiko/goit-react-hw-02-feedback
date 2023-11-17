@@ -7,9 +7,9 @@ export const FeedbackOptions = ({ onLeaveFeedback, options }) => (
           variant="contained"
           color="secondary"
           type="button"
-          onClick={onLeaveFeedback}
+          onClick={() => onLeaveFeedback(option)}
         >
-          {option[0].toUpperCase() + option.slice(1)}
+          {option}
         </FeedbackButton>
       </li>
     ))}

@@ -37,5 +37,5 @@ export const Statistic = props => {
 function createFeedbackItem(props, prop) {
   return prop === 'positivePercentage'
     ? 'Positive feedback: ' + props[prop] + '%'
-    : prop[0].toUpperCase() + prop.slice(1) + ': ' + props[prop];
+    : prop + ': ' + props[prop];
 }

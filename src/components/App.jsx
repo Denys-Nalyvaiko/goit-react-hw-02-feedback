@@ -21,9 +21,7 @@ export class App extends Component {
     return Math.round((this.state.good * 100) / this.countTotalFeedback()) || 0;
   }
 
-  onLeaveFeedback = event => {
-    const currentValue = event.target.textContent.toLowerCase();
-
+  onLeaveFeedback = currentValue => {
     this.setState(prevState => ({
       [currentValue]: prevState[currentValue] + 1,
     }));
